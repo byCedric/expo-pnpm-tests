@@ -1,0 +1,110 @@
+name: test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  npm:
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu', 'macos', 'windows']
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      # We still want to install with pnpm, to include the patches
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8.x
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+       # We still want to install with pnpm, to include the patches
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🧑‍⚕️ Check health
+        run: npx expo --help
+
+      - name: 👷 Export app
+        run: npx expo export
+
+  pnpm:
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu', 'macos', 'windows']
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8.x
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🧑‍⚕️ Check health
+        run: pnpm expo --help
+
+      - name: 👷 Export app
+        run: pnpm expo export
+
+  yarn:
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu', 'macos', 'windows']
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      # We still want to install with pnpm, to include the patches
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8.x
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      # We still want to install with pnpm, to include the patches
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🧑‍⚕️ Check health
+        run: yarn expo --help
+
+      - name: 👷 Export app
+        run: yarn expo export
