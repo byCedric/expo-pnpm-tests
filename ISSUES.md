@@ -1,6 +1,7 @@
 # Using pnpm with Expo 49
 
 - Installation was successful with `pnpm create expo ./pnpm-expo-49 -t blank@beta`
+
 - Manually bumped to `react-native` from `0.72.0-rc.6` to `0.72.0`
 
 - Running `pnpm start`
@@ -19,7 +20,6 @@
   >   - `pnpm start`
   >   - `yarn start`
 
-
 - Running `pod install` inside **/ios**
   > _Issue_ imported files from `expo/scripts/autolinking.rb` DOES NOT work with pnpm
   > _Issue_ imported files from `expo-modules-autolinking` DOES NOT work with pnpm
@@ -27,3 +27,13 @@
   > _Caused by_ `process.cwd()` still being at the `<projectRoot>/ios`, causing modules not to be found
   > **Fixed** in **./patches/expo@49.0.0-alpha.5.patch**
   > **Fixed** in **./patches/expo-modules-autolinkoing@1.5.0.patch**
+
+- Running `pnpm expo run:ios`
+  > _Issue_ Metro can't resolve the `./node_modules/expo/AppEntry`
+  > **Fixed** by adding `metro.config.js` with `config.resolver.unstable_enableSymlinks = true;`
+  > _Issue_ Metro can't resolve `../../App` from `./node_modules/expo/AppEntry`
+  > **Fixed** by using `index.js` instead of `./node_modules/expo/AppEntry`
+  > _Issue_ Metro can't resolve `@babel/runtime/helpers/interopRequireDefault` from `index.js`
+  > **Fixed** by adding `@babel/runtime` to project's dev dependencies
+  > _Issue_ Metro can't resolve `metro-runtime/src/modules/asyncRequire` defined in the default Metro config
+  > **Fixed** by resolving the modules in order from `react-native` -> `metro-runtime/...`
