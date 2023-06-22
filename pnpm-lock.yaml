@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   expo-modules-autolinking@1.5.0:
-    hash: ggce6d7qk2sm3hbresuzs5kykq
+    hash: 7xkd2ocbw3hult442rctot6lcq
     path: patches/expo-modules-autolinking@1.5.0.patch
   expo@49.0.0-alpha.5:
     hash: j47k3mukvj6n7pzdm3kwozdoju
@@ -1886,7 +1886,7 @@ packages:
       '@expo/image-utils': 0.3.22
       '@expo/json-file': 8.2.37
       debug: 4.3.4
-      expo-modules-autolinking: 1.5.0(patch_hash=ggce6d7qk2sm3hbresuzs5kykq)
+      expo-modules-autolinking: 1.5.0(patch_hash=7xkd2ocbw3hult442rctot6lcq)
       fs-extra: 9.1.0
       resolve-from: 5.0.0
       semver: 7.3.2
@@ -3601,7 +3601,7 @@ packages:
       fs-extra: 9.1.0
     dev: false
 
-  /expo-modules-autolinking@1.5.0(patch_hash=ggce6d7qk2sm3hbresuzs5kykq):
+  /expo-modules-autolinking@1.5.0(patch_hash=7xkd2ocbw3hult442rctot6lcq):
     resolution: {integrity: sha512-i9zll5xNYh0/sjaa6hpZlTHodKEu2tMEFsJJYsfBMTt8G9J8gGhalOydrX/Ql1E8bQ4GxnLAqrM7duR0Tj2VTQ==}
     hasBin: true
     dependencies:
@@ -3664,7 +3664,7 @@ packages:
       expo-file-system: 15.4.0(expo@49.0.0-alpha.5)
       expo-font: 11.4.0(expo@49.0.0-alpha.5)
       expo-keep-awake: 12.3.0(expo@49.0.0-alpha.5)
-      expo-modules-autolinking: 1.5.0(patch_hash=ggce6d7qk2sm3hbresuzs5kykq)
+      expo-modules-autolinking: 1.5.0(patch_hash=7xkd2ocbw3hult442rctot6lcq)
       expo-modules-core: 1.5.0
       fbemitter: 3.0.0
       invariant: 2.2.4

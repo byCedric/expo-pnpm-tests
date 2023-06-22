@@ -1,3 +1,21 @@
+diff --git a/build/autolinking/findModules.js b/build/autolinking/findModules.js
+index 8468bb879a9200b125c87e1c49f4f5cb87950824..0f6204c24712d26450c66a58d993bd478e476f1d 100644
+--- a/build/autolinking/findModules.js
++++ b/build/autolinking/findModules.js
+@@ -109,7 +109,12 @@ function addRevisionToResults(results, name, revision) {
+  */
+ async function findPackagesConfigPathsAsync(searchPath) {
+     const bracedFilenames = '{' + EXPO_MODULE_CONFIG_FILENAMES.join(',') + '}';
+-    const paths = await (0, fast_glob_1.default)([`*/${bracedFilenames}`, `@*/*/${bracedFilenames}`, `./${bracedFilenames}`], {
++    const paths = await (0, fast_glob_1.default)([
++        `*/${bracedFilenames}`,
++        `@*/*/${bracedFilenames}`,
++        `./${bracedFilenames}`,
++        `.pnpm/**/*/${bracedFilenames}`,
++    ], {
+         cwd: searchPath,
+     });
+     // If the package has multiple configs (e.g. `unimodule.json` and `expo-module.config.json` during the transition time)
 diff --git a/scripts/ios/autolinking_manager.rb b/scripts/ios/autolinking_manager.rb
 index d570ad23fd614b9bdc1ec1e50a0cd33843003ce6..aa593964f5ca417a1261e72c48f6d63298578b85 100644
 --- a/scripts/ios/autolinking_manager.rb
@@ -19,21 +37,21 @@ index bddfa0defde321fd909b5496946fd26e206d5e67..94be7a355761e7c739628471293624ed
      def self.set_autolinking_configuration(project)
        project.native_targets.each do |native_target|
          native_target.build_configurations.each do |build_configuration|
--          configuration_flag = "-D #{CONFIGURATION_FLAG_PREFIX}#{build_configuration.debug? ? "DEBUG" : "RELEASE"}"
+-          configuration_flag = "-D #{CONFIGURATION_FLAG_PREFIX}#{build_configuration.debug? ? "DEBUG" : "RELEASE"}"          
 +          configuration_flag = "-D #{CONFIGURATION_FLAG_PREFIX}#{build_configuration.debug? ? "DEBUG" : "RELEASE"}"
            build_settings = build_configuration.build_settings
-
+ 
            # For some targets it might be `nil` by default which is an equivalent to `$(inherited)`
 @@ -121,11 +121,11 @@ module Expo
            if !build_settings[SWIFT_FLAGS].include?(configuration_flag)
              # Remove existing flag to make sure we don't put another one each time
              build_settings[SWIFT_FLAGS] = build_settings[SWIFT_FLAGS].gsub(/\b-D\s+#{Regexp.quote(CONFIGURATION_FLAG_PREFIX)}\w+/, '')
--
+-  
 +
              # Add the correct flag
              build_settings[SWIFT_FLAGS] << ' ' << configuration_flag
-
--            # Make sure the project will be saved as we did some changes
+ 
+-            # Make sure the project will be saved as we did some changes 
 +            # Make sure the project will be saved as we did some changes
              project.mark_dirty!
            end
@@ -51,3 +69,21 @@ index 4acf193bf1613b9135c21fd73ea0fbb8aac00f95..58f8cf966fa373bc1ffc3c62375d3bae
          'patch-react-imports',
          '--pods-root',
          File.expand_path(@root),
+diff --git a/src/autolinking/findModules.ts b/src/autolinking/findModules.ts
+index 7b86a145892792529f765cdb94b74beaa757402b..770826b3c8f091f58969a701036c746700b4f4f0 100644
+--- a/src/autolinking/findModules.ts
++++ b/src/autolinking/findModules.ts
+@@ -132,7 +132,12 @@ function addRevisionToResults(
+ async function findPackagesConfigPathsAsync(searchPath: string): Promise<string[]> {
+   const bracedFilenames = '{' + EXPO_MODULE_CONFIG_FILENAMES.join(',') + '}';
+   const paths = await glob(
+-    [`*/${bracedFilenames}`, `@*/*/${bracedFilenames}`, `./${bracedFilenames}`],
++    [
++      `*/${bracedFilenames}`,
++      `@*/*/${bracedFilenames}`,
++      `./${bracedFilenames}`,
++      `.pnpm/**/*/${bracedFilenames}`,
++    ],
+     {
+       cwd: searchPath,
+     }
