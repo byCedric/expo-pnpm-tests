@@ -1,0 +1,11 @@
+diff --git a/bin/cli b/bin/cli
+index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..97cad00b1956f978073b2696e4fd8155a5460b2f 100755
+--- a/bin/cli
++++ b/bin/cli
+@@ -1,4 +1,4 @@
+ #!/usr/bin/env bash
+ 
+ # Forward all arguments to the local CLI (@expo/cli).
+-npm exec --no-install -- expo-internal "$@"
+\ No newline at end of file
++npm exec --no-install -- @expo/cli "$@"

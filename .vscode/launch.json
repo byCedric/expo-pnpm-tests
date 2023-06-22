@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "Expo: start",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["expo", "start"],
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ]
+}

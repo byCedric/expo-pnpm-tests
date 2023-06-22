@@ -4,10 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  expo@49.0.0-alpha.5:
+    hash: hqjswfc7ry2nqtujtqsv24cpsu
+    path: patches/expo@49.0.0-alpha.5.patch
+
 dependencies:
   expo:
     specifier: ~49.0.0-alpha.5
-    version: 49.0.0-alpha.5(@babel/core@7.20.2)
+    version: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
   expo-status-bar:
     specifier: ~1.6.0
     version: 1.6.0
@@ -3447,7 +3452,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
     dev: false
 
   /expo-asset@8.10.0(expo@49.0.0-alpha.5):
@@ -3471,7 +3476,7 @@ packages:
       expo: '*'
     dependencies:
       '@expo/config': 8.0.2
-      expo: 49.0.0-alpha.5(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
       uuid: 3.4.0
     transitivePeerDependencies:
       - supports-color
@@ -3482,7 +3487,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
       uuid: 3.4.0
     dev: false
 
@@ -3491,7 +3496,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
       fontfaceobserver: 2.3.0
     dev: false
 
@@ -3500,7 +3505,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
     dev: false
 
   /expo-modules-autolinking@1.5.0:
@@ -3528,7 +3533,7 @@ packages:
     resolution: {integrity: sha512-e//Oi2WPdomMlMDD3skE4+1ZarKCJ/suvcB4Jo/nO427niKug5oppcPNYO+csR6y3ZglGuypS+3pp/hJ+Xp6fQ==}
     dev: false
 
-  /expo@49.0.0-alpha.5(@babel/core@7.20.2):
+  /expo@49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2):
     resolution: {integrity: sha512-bTuyCU9Os4TctO4XILTGzXXdquRS/hEy3dzBrZf+t3zPFA/mf4Buc/tvaEBBpossI3fQFIqpgOqa/rwiif3uzg==}
     hasBin: true
     dependencies:
@@ -3560,6 +3565,7 @@ packages:
       - supports-color
       - utf-8-validate
     dev: false
+    patched: true
 
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
