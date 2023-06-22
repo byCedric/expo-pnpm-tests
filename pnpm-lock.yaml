@@ -15,8 +15,8 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0
   react-native:
-    specifier: 0.72.0-rc.6
-    version: 0.72.0-rc.6(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0)
+    specifier: 0.72.0
+    version: 0.72.0(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -2286,7 +2286,7 @@ packages:
     resolution: {integrity: sha512-285lfdqSXaqKuBbbtP9qL2tDrfxdOFtIMvkKadtleRQkdOxx+uzGvFr82KHmc/sSiMtfXGp7JnFYWVh4sFl7Yw==}
     dev: false
 
-  /@react-native/virtualized-lists@0.72.5(react-native@0.72.0-rc.6)(react-test-renderer@18.2.0):
+  /@react-native/virtualized-lists@0.72.5(react-native@0.72.0)(react-test-renderer@18.2.0):
     resolution: {integrity: sha512-AtKE3dez3lf89O87wC2ZglV5aPsifopQgn/UmFhXAwi18Yp1BJfEGh3sUqOPNgZNByYPAGxFANeZq44VATXeJA==}
     peerDependencies:
       react-native: '*'
@@ -2294,7 +2294,7 @@ packages:
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react-native: 0.72.0-rc.6(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0)
+      react-native: 0.72.0(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0)
       react-test-renderer: 18.2.0(react@18.2.0)
     dev: false
 
@@ -5661,8 +5661,8 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
-  /react-native@0.72.0-rc.6(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-pGF0kTTRPsf64+27PnlL1ERLi3Cczuvyi9pjBdNHtVIxiVPOzNsmHLmBUX7EtAL9G1z/iTYdXqB0wgkj5D++Mw==}
+  /react-native@0.72.0(@babel/core@7.20.2)(@babel/preset-env@7.22.5)(react-test-renderer@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BP2qq5f05pl3zV+eYgW7nmjCV+3zLXs/Vm69xMTCLD34U2bvRhuWbuUhqpauw7fyk5c8+LrY9NKcnARCkqKXcw==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
@@ -5677,7 +5677,7 @@ packages:
       '@react-native/gradle-plugin': 0.72.10
       '@react-native/js-polyfills': 0.72.1
       '@react-native/normalize-colors': 0.72.0
-      '@react-native/virtualized-lists': 0.72.5(react-native@0.72.0-rc.6)(react-test-renderer@18.2.0)
+      '@react-native/virtualized-lists': 0.72.5(react-native@0.72.0)(react-test-renderer@18.2.0)
       abort-controller: 3.0.0
       anser: 1.4.10
       base64-js: 1.5.1
