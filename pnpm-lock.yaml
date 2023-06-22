@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
+  '@expo/cli@0.10.0':
+    hash: wuoyggt3pdgfcg3ttmn7m2mgau
+    path: patches/@expo__cli@0.10.0.patch
   expo@49.0.0-alpha.5:
     hash: hqjswfc7ry2nqtujtqsv24cpsu
     path: patches/expo@49.0.0-alpha.5.patch
@@ -1542,7 +1545,7 @@ packages:
       safe-json-stringify: 1.2.0
     dev: false
 
-  /@expo/cli@0.10.0(expo-modules-autolinking@1.5.0):
+  /@expo/cli@0.10.0(patch_hash=wuoyggt3pdgfcg3ttmn7m2mgau)(expo-modules-autolinking@1.5.0):
     resolution: {integrity: sha512-MIb7/sZY0nYhGy5Fv8/HT42vJ2gUaHL12V3+JoH1F/5DW7UO87cdpeOX5OxmlLdoajrykLuvkSf4bVkKeLGE7w==}
     hasBin: true
     dependencies:
@@ -1617,6 +1620,7 @@ packages:
       - supports-color
       - utf-8-validate
     dev: false
+    patched: true
 
   /@expo/code-signing-certificates@0.0.5:
     resolution: {integrity: sha512-BNhXkY1bblxKZpltzAx98G2Egj9g1Q+JRcvR7E99DOj862FTCX+ZPsAUtPTr7aHxwtrL7+fL3r0JSmM9kBm+Bw==}
@@ -3538,7 +3542,7 @@ packages:
     hasBin: true
     dependencies:
       '@babel/runtime': 7.22.5
-      '@expo/cli': 0.10.0(expo-modules-autolinking@1.5.0)
+      '@expo/cli': 0.10.0(patch_hash=wuoyggt3pdgfcg3ttmn7m2mgau)(expo-modules-autolinking@1.5.0)
       '@expo/config': 8.1.0
       '@expo/config-plugins': 7.2.0
       '@expo/vector-icons': 13.0.0

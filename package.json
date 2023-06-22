@@ -20,7 +20,8 @@
   "private": true,
   "pnpm": {
     "patchedDependencies": {
-      "expo@49.0.0-alpha.5": "patches/expo@49.0.0-alpha.5.patch"
+      "expo@49.0.0-alpha.5": "patches/expo@49.0.0-alpha.5.patch",
+      "@expo/cli@0.10.0": "patches/@expo__cli@0.10.0.patch"
     }
   }
 }

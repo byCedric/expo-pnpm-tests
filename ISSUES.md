@@ -7,5 +7,3 @@
   > **issue**: results in `Need to install the following packages: expo-internal@0.0.0. Ok to proceed? (y)`
   > **issue**: after installing `pnpm start` results in `Error: expo must be installed`
   > Caused by `expo-internal` not being found by pnpm, set through `@expo/cli`'s **package.json** `bin` section
-
-
