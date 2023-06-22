@@ -1,8 +1,8 @@
 diff --git a/bin/cli b/bin/cli
-index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..8673b14ac22e3d37e9f9df794905368fada7cf2f 100755
+index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..f63acbd02cc8060452a960a714157716aece1eea 100755
 --- a/bin/cli
 +++ b/bin/cli
-@@ -1,4 +1,5 @@
+@@ -1,4 +1,9 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/env node
 +"use strict";
@@ -10,19 +10,24 @@ index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..8673b14ac22e3d37e9f9df794905368f
 -# Forward all arguments to the local CLI (@expo/cli).
 -npm exec --no-install -- expo-internal "$@"
 \ No newline at end of file
-+// Execute the local CLI (@expo/cli), using node module resolution
++// We can't use `npm exec` with pnpm, as the working directory is set to `<projectRoot>/ios`.
++// This causes the `expo-internal`, or `@expo/cli` not to be found.
++// Instead, we need to ask node to resolve this module.
++
++// This alternative implementation seems to work for all package managers
 +require('@expo/cli');
 diff --git a/scripts/autolinking.rb b/scripts/autolinking.rb
-index 0617de56d07b4e6915fc058d26f54c3296e8b71a..7790c16ee4a07b40f79488895b1f7d9d5f929218 100644
+index 0617de56d07b4e6915fc058d26f54c3296e8b71a..ba152a00a0fe3294b97699753438ebe1839f4f4c 100644
 --- a/scripts/autolinking.rb
 +++ b/scripts/autolinking.rb
-@@ -2,9 +2,9 @@ require 'json'
+@@ -2,9 +2,10 @@ require 'json'
  require 'pathname'
  require 'colored2' # dependency of CocoaPods
  
 -require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json')"`), "scripts/ios/autolinking_manager")
 -require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json')"`), "scripts/ios/xcode_env_generator")
 -require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json')"`), "scripts/ios/react_import_patcher")
++# The working directory will stil be set at `<projectRoot>/ios`, so we need to provide the location of this file when resolving the paths
 +require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json', { paths: ['#{__dir__}'] })"`), "scripts/ios/autolinking_manager")
 +require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json', { paths: ['#{__dir__}'] })"`), "scripts/ios/xcode_env_generator")
 +require File.join(File.dirname(`node --print "require.resolve('expo-modules-autolinking/package.json', { paths: ['#{__dir__}'] })"`), "scripts/ios/react_import_patcher")
