@@ -19,3 +19,10 @@
   >   - `pnpm start`
   >   - `yarn start`
 
+
+- Running `pod install` inside **/ios**
+  > _Issue_ imported files from `expo/scripts/autolinking.rb` DOES NOT work with pnpm
+  > _Issue_ imported files from `expo-modules-autolinking` DOES NOT work with pnpm
+  > _Caused by_ `process.cwd()` still being at the `<projectRoot>/ios`, causing modules not to be found
+  > **Fixed** in **./patches/expo@49.0.0-alpha.5.patch**
+  > **Fixed** in **./patches/expo-modules-autolinkoing@1.5.0.patch**

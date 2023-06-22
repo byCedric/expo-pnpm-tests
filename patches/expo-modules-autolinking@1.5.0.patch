@@ -1,0 +1,53 @@
+diff --git a/scripts/ios/autolinking_manager.rb b/scripts/ios/autolinking_manager.rb
+index d570ad23fd614b9bdc1ec1e50a0cd33843003ce6..aa593964f5ca417a1261e72c48f6d63298578b85 100644
+--- a/scripts/ios/autolinking_manager.rb
++++ b/scripts/ios/autolinking_manager.rb
+@@ -178,7 +178,7 @@ module Expo
+         'node',
+         '--no-warnings',
+         '--eval',
+-        'require(\'expo-modules-autolinking\')(process.argv.slice(1))',
++        'require(require.resolve(\'expo-modules-autolinking\', { paths: [\'' + __dir__ + '\'] }))(process.argv.slice(1))',
+         command_name,
+         '--platform',
+         'ios'
+diff --git a/scripts/ios/project_integrator.rb b/scripts/ios/project_integrator.rb
+index bddfa0defde321fd909b5496946fd26e206d5e67..94be7a355761e7c739628471293624ed4cb44775 100644
+--- a/scripts/ios/project_integrator.rb
++++ b/scripts/ios/project_integrator.rb
+@@ -109,7 +109,7 @@ module Expo
+     def self.set_autolinking_configuration(project)
+       project.native_targets.each do |native_target|
+         native_target.build_configurations.each do |build_configuration|
+-          configuration_flag = "-D #{CONFIGURATION_FLAG_PREFIX}#{build_configuration.debug? ? "DEBUG" : "RELEASE"}"
++          configuration_flag = "-D #{CONFIGURATION_FLAG_PREFIX}#{build_configuration.debug? ? "DEBUG" : "RELEASE"}"
+           build_settings = build_configuration.build_settings
+
+           # For some targets it might be `nil` by default which is an equivalent to `$(inherited)`
+@@ -121,11 +121,11 @@ module Expo
+           if !build_settings[SWIFT_FLAGS].include?(configuration_flag)
+             # Remove existing flag to make sure we don't put another one each time
+             build_settings[SWIFT_FLAGS] = build_settings[SWIFT_FLAGS].gsub(/\b-D\s+#{Regexp.quote(CONFIGURATION_FLAG_PREFIX)}\w+/, '')
+-
++
+             # Add the correct flag
+             build_settings[SWIFT_FLAGS] << ' ' << configuration_flag
+
+-            # Make sure the project will be saved as we did some changes
++            # Make sure the project will be saved as we did some changes
+             project.mark_dirty!
+           end
+         end
+diff --git a/scripts/ios/react_import_patcher.rb b/scripts/ios/react_import_patcher.rb
+index 4acf193bf1613b9135c21fd73ea0fbb8aac00f95..58f8cf966fa373bc1ffc3c62375d3baeef6d4369 100644
+--- a/scripts/ios/react_import_patcher.rb
++++ b/scripts/ios/react_import_patcher.rb
+@@ -14,7 +14,7 @@ module Expo
+         'node',
+         '--no-warnings',
+         '--eval',
+-        'require(\'expo-modules-autolinking\')(process.argv.slice(1))',
++        'require(require.resolve(\'expo-modules-autolinking\', { paths: [\'' + __dir__ + '\'] }))(process.argv.slice(1))',
+         'patch-react-imports',
+         '--pods-root',
+         File.expand_path(@root),
