@@ -5,17 +5,14 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  '@expo/cli@0.10.0':
-    hash: wuoyggt3pdgfcg3ttmn7m2mgau
-    path: patches/@expo__cli@0.10.0.patch
   expo@49.0.0-alpha.5:
-    hash: hqjswfc7ry2nqtujtqsv24cpsu
+    hash: lqpa4jjoit6b663vbehipb7wey
     path: patches/expo@49.0.0-alpha.5.patch
 
 dependencies:
   expo:
     specifier: ~49.0.0-alpha.5
-    version: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+    version: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
   expo-status-bar:
     specifier: ~1.6.0
     version: 1.6.0
@@ -1545,7 +1542,7 @@ packages:
       safe-json-stringify: 1.2.0
     dev: false
 
-  /@expo/cli@0.10.0(patch_hash=wuoyggt3pdgfcg3ttmn7m2mgau)(expo-modules-autolinking@1.5.0):
+  /@expo/cli@0.10.0(expo-modules-autolinking@1.5.0):
     resolution: {integrity: sha512-MIb7/sZY0nYhGy5Fv8/HT42vJ2gUaHL12V3+JoH1F/5DW7UO87cdpeOX5OxmlLdoajrykLuvkSf4bVkKeLGE7w==}
     hasBin: true
     dependencies:
@@ -1620,7 +1617,6 @@ packages:
       - supports-color
       - utf-8-validate
     dev: false
-    patched: true
 
   /@expo/code-signing-certificates@0.0.5:
     resolution: {integrity: sha512-BNhXkY1bblxKZpltzAx98G2Egj9g1Q+JRcvR7E99DOj862FTCX+ZPsAUtPTr7aHxwtrL7+fL3r0JSmM9kBm+Bw==}
@@ -1861,7 +1857,7 @@ packages:
       '@expo/json-file': 8.2.37
       debug: 4.3.4
       expo-modules-autolinking: 1.5.0
-      fs-extra: 9.1.0
+      fs-extra: 9.0.0
       resolve-from: 5.0.0
       semver: 7.3.2
       xml2js: 0.6.0
@@ -3456,7 +3452,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
     dev: false
 
   /expo-asset@8.10.0(expo@49.0.0-alpha.5):
@@ -3480,7 +3476,7 @@ packages:
       expo: '*'
     dependencies:
       '@expo/config': 8.0.2
-      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
       uuid: 3.4.0
     transitivePeerDependencies:
       - supports-color
@@ -3491,7 +3487,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
       uuid: 3.4.0
     dev: false
 
@@ -3500,7 +3496,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
       fontfaceobserver: 2.3.0
     dev: false
 
@@ -3509,7 +3505,7 @@ packages:
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2)
+      expo: 49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2)
     dev: false
 
   /expo-modules-autolinking@1.5.0:
@@ -3537,12 +3533,12 @@ packages:
     resolution: {integrity: sha512-e//Oi2WPdomMlMDD3skE4+1ZarKCJ/suvcB4Jo/nO427niKug5oppcPNYO+csR6y3ZglGuypS+3pp/hJ+Xp6fQ==}
     dev: false
 
-  /expo@49.0.0-alpha.5(patch_hash=hqjswfc7ry2nqtujtqsv24cpsu)(@babel/core@7.20.2):
+  /expo@49.0.0-alpha.5(patch_hash=lqpa4jjoit6b663vbehipb7wey)(@babel/core@7.20.2):
     resolution: {integrity: sha512-bTuyCU9Os4TctO4XILTGzXXdquRS/hEy3dzBrZf+t3zPFA/mf4Buc/tvaEBBpossI3fQFIqpgOqa/rwiif3uzg==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.22.5
-      '@expo/cli': 0.10.0(patch_hash=wuoyggt3pdgfcg3ttmn7m2mgau)(expo-modules-autolinking@1.5.0)
+      '@expo/cli': 0.10.0(expo-modules-autolinking@1.5.0)
       '@expo/config': 8.1.0
       '@expo/config-plugins': 7.2.0
       '@expo/vector-icons': 13.0.0

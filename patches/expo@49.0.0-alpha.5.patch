@@ -1,11 +1,14 @@
 diff --git a/bin/cli b/bin/cli
-index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..97cad00b1956f978073b2696e4fd8155a5460b2f 100755
+index 200f9b97c40880eb9f83a11358f2dc18b6d478bc..8673b14ac22e3d37e9f9df794905368fada7cf2f 100755
 --- a/bin/cli
 +++ b/bin/cli
-@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+@@ -1,4 +1,5 @@
+-#!/usr/bin/env bash
++#!/usr/bin/env node
++"use strict";
 
- # Forward all arguments to the local CLI (@expo/cli).
+-# Forward all arguments to the local CLI (@expo/cli).
 -npm exec --no-install -- expo-internal "$@"
 \ No newline at end of file
-+npm exec --no-install -- "@expo/cli" "$@"
++// Execute the local CLI (@expo/cli), using node module resolution
++require('@expo/cli');
