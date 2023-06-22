@@ -42,6 +42,12 @@ jobs:
       - name: 🧑‍⚕️ Check health
         run: npx expo --help
 
+      - name: 🧪 Check current working directory
+        run: node --print "process.cwd()"
+
+      - name: 🧪 Check `@babel/runtime` issue
+        run: node --print "require.resolve('@babel/runtime/helpers/interopRequireDefault')"
+
       - name: 👷 Export app
         run: npx expo export
 
@@ -72,6 +78,12 @@ jobs:
 
       - name: 🧑‍⚕️ Check health
         run: pnpm expo --help
+
+      - name: 🧪 Check current working directory
+        run: node --print "process.cwd()"
+
+      - name: 🧪 Check `@babel/runtime` issue
+        run: node --print "require.resolve('@babel/runtime/helpers/interopRequireDefault')"
 
       - name: 👷 Export app
         run: pnpm expo export
@@ -105,6 +117,12 @@ jobs:
 
       - name: 🧑‍⚕️ Check health
         run: yarn expo --help
+
+      - name: 🧪 Check current working directory
+        run: node --print "process.cwd()"
+
+      - name: 🧪 Check `@babel/runtime` issue
+        run: node --print "require.resolve('@babel/runtime/helpers/interopRequireDefault')"
 
       - name: 👷 Export app
         run: yarn expo export
