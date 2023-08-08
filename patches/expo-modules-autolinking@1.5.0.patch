@@ -2,7 +2,7 @@ diff --git a/build/autolinking/findModules.js b/build/autolinking/findModules.js
 index 8468bb879a9200b125c87e1c49f4f5cb87950824..d8db696c22e489c73ea9f2d4265dcb9318fa9acb 100644
 --- a/build/autolinking/findModules.js
 +++ b/build/autolinking/findModules.js
-@@ -109,7 +109,15 @@ function addRevisionToResults(results, name, revision) {
+@@ -109,7 +109,16 @@ function addRevisionToResults(results, name, revision) {
   */
  async function findPackagesConfigPathsAsync(searchPath) {
      const bracedFilenames = '{' + EXPO_MODULE_CONFIG_FILENAMES.join(',') + '}';
@@ -14,7 +14,8 @@ index 8468bb879a9200b125c87e1c49f4f5cb87950824..d8db696c22e489c73ea9f2d4265dcb93
 +        // This is a hacky workaround to force autolinking to search for all available install locations.
 +        // Check the structure of `node_modules` for more info, it only contains the direct dependencies of the project.
 +        // Everything is installed in `node_modules/.pnpm/**`, so that's where we should look for pnpm.
-+        `.pnpm/**/*/${bracedFilenames}`,
++        `.pnpm/*/node_modules/*/${bracedFilenames}`,
++        `.pnpm/*/node_modules/@*/*/${bracedFilenames}`,
 +    ], {
          cwd: searchPath,
      });
@@ -51,7 +52,7 @@ diff --git a/src/autolinking/findModules.ts b/src/autolinking/findModules.ts
 index 7b86a145892792529f765cdb94b74beaa757402b..fb036f7168f5d2248274feed4ec9cdc29928dd4a 100644
 --- a/src/autolinking/findModules.ts
 +++ b/src/autolinking/findModules.ts
-@@ -132,7 +132,15 @@ function addRevisionToResults(
+@@ -132,7 +132,16 @@ function addRevisionToResults(
  async function findPackagesConfigPathsAsync(searchPath: string): Promise<string[]> {
    const bracedFilenames = '{' + EXPO_MODULE_CONFIG_FILENAMES.join(',') + '}';
    const paths = await glob(
@@ -63,7 +64,8 @@ index 7b86a145892792529f765cdb94b74beaa757402b..fb036f7168f5d2248274feed4ec9cdc2
 +      // This is a hacky workaround to force autolinking to search for all available install locations.
 +      // Check the structure of `node_modules` for more info, it only contains the direct dependencies of the project.
 +      // Everything is installed in `node_modules/.pnpm/**`, so that's where we should look for pnpm.
-+      `.pnpm/**/*/${bracedFilenames}`,
++      `.pnpm/*/node_modules/*/${bracedFilenames}`,
++      `.pnpm/*/node_modules/@*/*/${bracedFilenames}`,
 +    ],
      {
        cwd: searchPath,
